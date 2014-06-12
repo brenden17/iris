@@ -6,10 +6,11 @@ from sklearn.neighbors import KNeighborsClassifier
 iris = datasets.load_iris()
 print(iris.DESCR)
 print(iris.target_names)
-
 X, y = iris.data, iris.target
+print(X[0:10, :])
 print('Size of data : %s' % (X.shape, ))
 print('Target value : %s' % np.unique(y))
+
 
 sample = [[3, 5, 4, 2],]
 # try 1.
@@ -25,8 +26,8 @@ knn = KNeighborsClassifier(n_neighbors=3, weights='distance')
 knn.fit(X, y)
 predicted_value = knn.predict(sample)
 print('Try 2. -----')
-print(knn.predict_proba(sample))
 print(iris.target_names[predicted_value])
+print(knn.predict_proba(sample))
 
 from sklearn.grid_search import GridSearchCV
 
