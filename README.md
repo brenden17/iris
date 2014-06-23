@@ -158,7 +158,7 @@ from sklearn.svm import SVC
 
 ## KNN
 estimators = [('pca', PCA()), ('knn', KNeighborsClassifier())]
-parameters = {'pca__n_components':(2, 3), 'knn__n_neighbors':(1, 3, 10), 'knn__weights':('uniform', 'distance')}
+parameters = {'pca__n_components':(2, 3), 'knn__n_neighbors':(1, 10), 'knn__weights':('uniform', 'distance')}
 
 pipeline = Pipeline(estimators)
 print(pipeline)
