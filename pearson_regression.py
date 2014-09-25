@@ -1,6 +1,8 @@
+import pandas as pd
 import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
+import statsmodels.formula.api as sm
 
 def loaddata(filename='pearson.dat'):
     data = np.loadtxt(filename)
@@ -19,6 +21,10 @@ def draw_pearson(x, y):
     plt.autoscale(tight=True)
     plt.grid()
     plt.show()
+
+def loaddata_by_pd(filename='pearson.csv'):
+    pearson_df = pd.read_csv(filename)
+    pearson_df.plot()
 
 loaddata()
 
@@ -189,7 +195,28 @@ def modeling4():
     plt.legend(loc='upper left')
     plt.grid()
     plt.show()
-        
+
+def modeling5():
+    x, y = loaddata()
+    res = sm.OLS(y, x).fit()
+    print(res.summary())
+
+def mdeling6():
+    x, y = loaddata(filename='pearson.dat'):
+    polyorder, residuals, _, _, _ = sp.polyfit(x, y, 1, full=True)
+    model1 = sp.poly1d(polyorder)
+
+    l = np.linspace(x.min(), x.max(),1000)
+    plt.plot(l, model1(l))
+    plt.plot(xx, xx, 'r--')
+    plt.scatter(x, y)
+    plt.title('The heihgt of father and son')
+    plt.xlabel('The heihgt of father')
+    plt.ylabel('The heihgt of son')
+    plt.autoscale(tight=True)
+    plt.grid()
+    plt.show()
+
 # create_save_reg()
 # modeling1()
 # modeling2()
